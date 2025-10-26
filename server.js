@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose');
 const User = require('./model/User');
 const path = require('path');
+const cors = require('cors')
 const mongoURI = "mongodb+srv://paras:pskapoor@cluster0.1ujgy.mongodb.net/websockets"
 
 const cookieParser = require('cookie-parser');
@@ -15,6 +16,8 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
+
+app.use(cors)
 
 const secret = "salt"
 app.use(cors(
